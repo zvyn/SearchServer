@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Information Retrieval WS1213: Search Demo</title>
+        <link rel="shortcut icon" href="img/jquery-ui-1.8.24/ui-bg_flat_75_ffffff_40x100.png" />
+        <meta charset="utf-8"/>
+        <link rel="stylesheet/less" type="text/css" href="css/jquery-search-0.9.less">
+        <script type="text/javascript" src="javaScripts/require-1.0.js"></script>
+        <script type="text/javascript">
+            window.require([['jQuery.fn.Search', 'jquery-search-0.9']], function() {
+                /*
+                    Embedd jQuery and require full compatible to all other
+                    JavaScripts.
+                    The global scope is clean after this sequence. The given
+                    function is called when the dom-tree was loaded.
+                */
+                window.jQuery.noConflict(true)(function(jQuery) {
+                    jQuery('input[type="text"]').Search({
+                        'logging': true});
+                });
+            });
+        </script>
+    </head>
+    <body class="search">
+        <form action="" method="get">
+            <div class="ui-widget">
+                <input type="text" name="searchQuery" value="" />
+                <label for="number">
+                    Number of results:
+                </label>
+                <input type="text" name="number" value="10" />
+                <label for="numberOfSuggestions">
+                    Number of suggestions:
+                </label>
+                <input type="text" name="numberOfSuggestions" value="10" />
+            </div>
+            <input type="submit" name="search" value="Suche" />
+        </form>
+        <div class="results"></div>
+    </body>
+</html>
