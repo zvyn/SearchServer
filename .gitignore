@@ -19,6 +19,8 @@
 *.lib
 
 # Executables
+*Main
+*Test
 *.exe
 *.out
 *.app

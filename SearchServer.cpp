@@ -33,7 +33,7 @@ string SearchServer::http200(
     string const& content, string const& mimeType) {
   std::stringstream answer;
   answer << "HTTP/1.0 200 OK\r\n"
-    << "Server: None\r\n"
+    << "Server: SearchServer 0.1\r\n"
     << "Content-Length: " << content.size() << "\r\n"
     << "Content-Language: en\r\n"
     << "Content-Type: " << mimeType  << "; charset=utf-8\r\n"
@@ -102,7 +102,7 @@ string SearchServer::http418(
     << "<html>"
     << "<head><title>418 - I'm a teapot</title></head>"
     << "<body><h1>418 - I'm a teapot</h1>"
-    << "<p>Someone filled coffe into a"
+    << "<p>Someone filled coffee into a"
     << " teapot, sorry.</br>"
     << content
     << "</p></body></html>";
@@ -131,7 +131,7 @@ void SearchServer::parse(int argc, char** argv) {
     << endl;
 
   string optionsPrefix =
-    "Usage: ./ApproximateMatchingMain <input-file> <port> [Options]\n" +
+    "Usage: ./SearchServerMain <input-file> <port> [Options]\n" +
     string("Options are");
 
   po::options_description allOptions("");
@@ -167,9 +167,9 @@ void SearchServer::parse(int argc, char** argv) {
   positionalOptions.add("port", 1);
 
   std::stringstream usage;
-  usage << "HTTP-Server to serve files in web-root and answer queries for"
-    << "words or records from an CSV-file with lines of the kind"
-    << "\"url\\ttext\" (Queries have a 'v=arg' and/or 'q=arg' in the"
+  usage << "HTTP-Server to serve files in web-root and answer queries for "
+    << "words or records from a CSV-file with lines of the kind "
+    << "\"url\\ttext\" (Queries have a 'v=arg' and/or 'q=arg' in the "
     << "GET-field)." << std::endl
     << visibleOptions << std::endl << defaults.str() << std::endl;
   _usage = usage.str();
